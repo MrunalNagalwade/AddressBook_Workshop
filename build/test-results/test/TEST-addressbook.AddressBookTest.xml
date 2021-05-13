@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbook.AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-13T10:39:27" hostname="MRUNAL" time="0.137">
+<testsuite name="addressbook.AddressBookTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-13T16:02:38" hostname="MRUNAL" time="0.146">
   <properties/>
-  <testcase name="whenPersonDetails_Added_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.137"/>
+  <testcase name="givenCSVFile_WhenRead_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.034"/>
+  <testcase name="whenPersonDetails_Added_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.096"/>
+  <testcase name="givenCSVFile_WhenWritten_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.012"/>
   <system-out><![CDATA[[Contact [firstName=Mrunal, lastName=nagalwade, Address=Ram nagar, city=Bhandara, state=Maharashtra, pincode=664011, MobileNo=9089987898]
 ]
 person is added in file
+true
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
