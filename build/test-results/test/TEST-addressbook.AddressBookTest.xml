@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="addressbook.AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-13T10:07:42" hostname="MRUNAL" time="0.212">
+  <properties/>
+  <testcase name="whenPersonDetails_Added_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.212"/>
+  <system-out><![CDATA[[Contact [firstName=Mrunal, lastName=Nagalwade, Address=Ram Nagar, city=Nagpur, state=Maharashtra, pincode=600164, MobileNo=9098909878]
+]
+Person is added in file
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
