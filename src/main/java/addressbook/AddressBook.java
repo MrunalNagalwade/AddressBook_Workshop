@@ -29,7 +29,7 @@ public class AddressBook {
 
     private boolean readFile(ArrayList<Contact> contact) throws IOException {
         String HOME = System.getProperty("user.home");
-        String fileName = "AddressBookIO.txt";
+        String fileName = "AddressBook.txt";
         Path homePath = Paths.get(HOME);
         if (Files.exists(homePath))
         {
