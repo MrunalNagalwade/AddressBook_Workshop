@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddressBookTest {
     AddressBook addressBook = new AddressBook();
@@ -48,5 +47,27 @@ public class AddressBookTest {
         Boolean result = openCSVReader.writeCSV(contactdetail);
         Assertions.assertTrue(result);
     }
+    @Test
+    public void whenPersonDetails_Added_ShouldReturnTRUE()
+    {
+        ArrayList<Contact> jsoncontact = new ArrayList<>();
+        Contact jsoncontact1 = new Contact("Subodh", "Nag", "Dombiovali", "Mumbai", "Maharashtra", "subodh@gmail.com", 9089898989L, 660078
+                );
+        Contact jsoncontact2 = new Contact ("Raghav", "Pandey", "Dombiovali", "Mumbai", "Maharashtra", "subodh@gmail.com", 9089898989L, 660078
+                );
+        jsoncontact.add(jsoncontact1);
+        jsoncontact.add(jsoncontact2);
+        AddressBookJson jsonfile = new AddressBookJson();
+        System.out.println(jsoncontact);
+        boolean jsonResult = jsonfile.jsonWriteData(jsoncontact);
+        Assertions.assertTrue(jsonResult);
+    }
 
+    @Test
+    public void whenJsonFile_Added_ShouldReturnTRUE()
+    {
+        AddressBookJson addressBookJson = new AddressBookJson();
+        boolean jsonResult1 = addressBookJson.jsonReadData();
+        Assertions.assertTrue(jsonResult1);
+    }
 }

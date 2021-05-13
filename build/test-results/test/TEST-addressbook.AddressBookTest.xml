@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbook.AddressBookTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-05-13T16:02:38" hostname="MRUNAL" time="0.146">
+<testsuite name="addressbook.AddressBookTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-13T17:06:06" hostname="MRUNAL" time="0.293">
   <properties/>
-  <testcase name="givenCSVFile_WhenRead_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.034"/>
-  <testcase name="whenPersonDetails_Added_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.096"/>
-  <testcase name="givenCSVFile_WhenWritten_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.012"/>
-  <system-out><![CDATA[[Contact [firstName=Mrunal, lastName=nagalwade, Address=Ram nagar, city=Bhandara, state=Maharashtra, pincode=664011, MobileNo=9089987898]
+  <testcase name="givenCSVFile_WhenRead_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.033"/>
+  <testcase name="givenJsonFile_WhenReadData_ShouldReturn_TRUE()" classname="addressbook.AddressBookTest" time="0.054"/>
+  <testcase name="givenObject_WhenStoredInTheJson_ShouldReturn_TRUE()" classname="addressbook.AddressBookTest" time="0.142"/>
+  <testcase name="whenPersonDetails_Added_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.037"/>
+  <testcase name="givenCSVFile_WhenWritten_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.019"/>
+  <system-out><![CDATA[[Contact [firstName=Subodh, lastName=Nag, Address=Dombiovali, city=Mumbai, state=Maharashtra, pincode=660078, MobileNo=9089898989]
+, Contact [firstName=Raghav, lastName=Pandey, Address=Dombiovali, city=Mumbai, state=Maharashtra, pincode=660078, MobileNo=9089898989]
+]
+[Contact [firstName=Mrunal, lastName=nagalwade, Address=Ram nagar, city=Bhandara, state=Maharashtra, pincode=664011, MobileNo=9089987898]
 ]
 person is added in file
 true
