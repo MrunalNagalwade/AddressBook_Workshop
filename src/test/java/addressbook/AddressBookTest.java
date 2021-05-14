@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddressBookTest {
     AddressBook addressBook = new AddressBook();
@@ -69,5 +70,13 @@ public class AddressBookTest {
         AddressBookJson addressBookJson = new AddressBookJson();
         boolean jsonResult1 = addressBookJson.jsonReadData();
         Assertions.assertTrue(jsonResult1);
+    }
+    @Test
+    public void givenAddressBookPersonsDetailsDB_WhenRetrieved_ShouldMatchCount()
+    {
+        AddressBookService addressBookService = new AddressBookService();
+        List<Contact> contactList = addressBookService.readPersonDetailsDataDB(AddressBookService.IOService.DB_IO);
+        System.out.println(contactList.toString());
+        Assertions.assertEquals(7,contactList.size());
     }
 }

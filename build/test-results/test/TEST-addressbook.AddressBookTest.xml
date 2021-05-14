@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="addressbook.AddressBookTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2021-05-13T17:06:06" hostname="MRUNAL" time="0.293">
+<testsuite name="addressbook.AddressBookTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-05-14T12:30:17" hostname="MRUNAL" time="0.815">
   <properties/>
-  <testcase name="givenCSVFile_WhenRead_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.033"/>
-  <testcase name="givenJsonFile_WhenReadData_ShouldReturn_TRUE()" classname="addressbook.AddressBookTest" time="0.054"/>
-  <testcase name="givenObject_WhenStoredInTheJson_ShouldReturn_TRUE()" classname="addressbook.AddressBookTest" time="0.142"/>
-  <testcase name="whenPersonDetails_Added_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.037"/>
-  <testcase name="givenCSVFile_WhenWritten_ShouldReturn_True()" classname="addressbook.AddressBookTest" time="0.019"/>
-  <system-out><![CDATA[[Contact [firstName=Subodh, lastName=Nag, Address=Dombiovali, city=Mumbai, state=Maharashtra, pincode=660078, MobileNo=9089898989]
-, Contact [firstName=Raghav, lastName=Pandey, Address=Dombiovali, city=Mumbai, state=Maharashtra, pincode=660078, MobileNo=9089898989]
+  <testcase name="givenAddressBookPersonsDetailsDB_WhenRetrieved_ShouldMatchCount()" classname="addressbook.AddressBookTest" time="0.815"/>
+  <system-out><![CDATA[Connecting to database:jdbc:mysql://localhost:3306/Address_book_serviceDB
+Connection is successful!!!com.mysql.cj.jdbc.ConnectionImpl@190f106d
+[Contact [firstName=Radha, lastName=Pandey, Address=Gandhi nagar, city=Bhandara, state=MH, pincode=600200, MobileNo=9090989898]
+, Contact [firstName=Mugdha, lastName=Bante, Address=Ram Nagar, city=Nagpur, state=MH, pincode=600200, MobileNo=8090989898]
+, Contact [firstName=Rishabh, lastName=pawar, Address=Shivaji nagar, city=PUNE, state=MH, pincode=600200, MobileNo=9090989898]
+, Contact [firstName=Rutu, lastName=Katre, Address=kurve nagar, city=Banglore, state=Karnataka, pincode=800200, MobileNo=9090989898]
+, Contact [firstName=Ishan, lastName=Katre, Address=kurve nagar, city=Banglore, state=Karnataka, pincode=800200, MobileNo=9090989898]
+, Contact [firstName=RutuJA, lastName=SINGH, Address=kurve nagar, city=Banglore, state=Karnataka, pincode=800200, MobileNo=9090989898]
+, Contact [firstName=RutuJA, lastName=SINGH, Address=kurve nagar, city=Banglore, state=Karnataka, pincode=800200, MobileNo=9090989898]
 ]
-[Contact [firstName=Mrunal, lastName=nagalwade, Address=Ram nagar, city=Bhandara, state=Maharashtra, pincode=664011, MobileNo=9089987898]
-]
-person is added in file
-true
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
