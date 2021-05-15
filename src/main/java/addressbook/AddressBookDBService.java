@@ -1,6 +1,7 @@
 package addressbook;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,11 +107,6 @@ public class AddressBookDBService {
         }
         return 0;
     }
-    /*public List<Contact> getPersonCity(String city)
-    {
-        String sql = String.format("SELECT * FROM address_book_service WHERE city =  '%s';", city);
-        return this.getAddressBookDataUsingDB(sql);
-    }*/
     public List<Contact> getPersonCity(String city)
     {
         String sql = String.format("SELECT * FROM address_book_service WHERE city =  '%s';", city);
@@ -135,6 +131,29 @@ public class AddressBookDBService {
             e.printStackTrace();
         }
         return addressBookList;
+    }
+    public Contact addEntryToPayroll(String firstName, String lastName, String address, String city, String state, String email, long mobileNo, int zip , LocalDate entryDate) {
+        Contact contact = null;
+        firstName = "'"+firstName+"'";
+        lastName = "'"+lastName+"'";
+        address = "'"+address+"'";
+        city = "'"+city+"'";
+        state = "'"+state+"'";
+        email = "'"+email+"'";
+        mobileNo = mobileNo;
+        zip = zip;
+
+        String date = "'"+entryDate.toString()+"'";
+        String sql = "INSERT INTO address_book_service VALUES ("+firstName+","+lastName+","+address+","+city+","+state+","+zip+","+mobileNo+","+email+","+date+");";
+        try (Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+            System.out.println("Multiple contacts added");
+            contact = new Contact(firstName, lastName, address, city, state,  email, mobileNo,zip,entryDate);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return contact;
     }
     public static void main(String[] args) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/Address_book_serviceDB";

@@ -1,6 +1,7 @@
 package addressbook;
 
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.List;
 
 public class AddressBookService {
@@ -38,10 +39,6 @@ public class AddressBookService {
     private Contact getData(String firstName) {
         return this.contactList.stream().filter(contactDetails -> contactDetails.firstName.equals(firstName)).findFirst().orElse(null);
     }
-    /*public List<Contact> getPersonCity(IOService ioService, String city)
-    {
-        return addressBookDBService.getPersonCity(city);
-    }*/
     public List<Contact> getPersonCity(IOService ioService, String city)
     {
         return addressBookDBService.getPersonCity(city);
@@ -49,5 +46,38 @@ public class AddressBookService {
     public List<Contact> getPersonState(IOService ioService, String state)
     {
         return addressBookDBService.getPersonState( state);
+    }
+    public boolean checkDataInDB(String firstName)
+    {
+        boolean status = true;
+        for (Contact person : contactList)
+        {
+            if (person.getFirstName() == firstName)
+            {
+                status = true;
+            }
+        }
+        return status;
+    }
+    public void addEmployeeToAddressBook(String firstName, String lastName, String address, String city, String state, String email, long mobileNo, int zip, LocalDate entryDate)
+    {
+        contactList.add(addressBookDBService.addEntryToPayroll(firstName, lastName, address, city, state,  email, mobileNo,zip, entryDate));
+    }
+    public void multipleDataAdded(List<Contact> List)
+    {
+        List.forEach(person -> {
+            this.addEmployeeToAddressBook(person.getFirstName(),
+                    person.getLastName(),
+                    person.getAddress(),
+                    person.getCity(),
+                    person.getState(),
+                    person.getEmail(),
+                    person.getMobileNo(),
+                    person.getZip(),
+                    person.getEntryDate());
+            System.out.println("Contact Details added succesfully");
+            System.out.println(person.getFirstName());
+            //System.out.println(personList);
+        });
     }
 }

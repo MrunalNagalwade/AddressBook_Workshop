@@ -1,5 +1,7 @@
 package addressbook;
 
+import java.time.LocalDate;
+
 public class Contact {
     String firstName;
     String lastName;
@@ -9,6 +11,7 @@ public class Contact {
     String email;
     long mobileNo;
     int zip;
+    LocalDate entryDate;
 
     public Contact(String firstName, String lastName, String address, String city, String state, String email, long mobileNo, int zip)
     {
@@ -20,6 +23,18 @@ public class Contact {
         this.email = email;
         this.mobileNo = mobileNo;
         this.zip = zip;
+    }
+    public Contact(String firstName, String lastName, String address, String city, String state, String email, long mobileNo, int zip, LocalDate entryDate)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address= address;
+        this.city = city;
+        this.state = state;
+        this.email = email;
+        this.mobileNo = mobileNo;
+        this.zip = zip;
+        this.entryDate = entryDate;
     }
     public String getFirstName()
     {
@@ -83,6 +98,14 @@ public class Contact {
     public void setZip(int zip)
     {
         this.zip = zip;
+    }
+    public LocalDate getEntryDate()
+    {
+        return entryDate;
+    }
+    public void setEntryDate(LocalDate entryDate)
+    {
+        this.entryDate = entryDate;
     }
     public String toString()
     {
