@@ -89,7 +89,7 @@ public class AddressBookTest {
         Assertions.assertTrue(updateresult);
 
     }
-    @Test
+    /*@Test
     public void whenStateFromDB_CountRetrieved_ShouldReturnTrue()
     {
         AddressBookService addressBookService = new AddressBookService();
@@ -98,5 +98,20 @@ public class AddressBookTest {
                         "Bhandara");
         System.out.println(addressBookCityList.toString());
         Assertions.assertEquals(1, addressBookCityList.size());
+    }*/
+    @Test
+    public void whenStateFromDB_CountRetrieved_ShouldReturnTrue()
+    {
+        AddressBookService addressBookService = new AddressBookService();
+        List<Contact> addressBookCityList =
+                addressBookService.getPersonCity(AddressBookService.IOService.DB_IO,
+                        "Bhandara");
+        System.out.println(addressBookCityList.toString());
+        List<Contact> addressBookStateList =
+                addressBookService.getPersonState(AddressBookService.IOService.DB_IO, "MH");
+        System.out.println(addressBookStateList.toString());
+        Assertions.assertEquals(1, addressBookCityList.size());
+        Assertions.assertEquals(2, addressBookStateList.size());
     }
+
 }
