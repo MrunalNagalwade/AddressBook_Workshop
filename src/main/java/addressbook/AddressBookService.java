@@ -1,5 +1,6 @@
 package addressbook;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 public class AddressBookService {
@@ -14,5 +15,27 @@ public class AddressBookService {
         if(ioService.equals( IOService.DB_IO ))
             this.contactList =  addressBookDBService.readData();
         return this.contactList;
+    }
+    public void updateState(String firstName, String State)
+    {
+        int result = addressBookDBService.updateState(firstName, State);
+        if (result == 0) return;
+        Contact person = this.getAddressBookData(firstName);
+        if (person != null) person.state = State;
+    }
+    private Contact getAddressBookData(String firstName)
+    {
+        return this.contactList.stream()
+                .filter(addressBookDataItem -> addressBookDataItem.firstName.equals(firstName))
+                .findFirst()
+                .orElse(null);
+    }
+    public boolean checkDataWithDB(String firstName) {
+        List<Contact> addressBookDataList = addressBookDBService.getAddressbookContactData(firstName);
+        return addressBookDataList.get(0).equals(getData(firstName));
+    }
+
+    private Contact getData(String firstName) {
+        return this.contactList.stream().filter(contactDetails -> contactDetails.firstName.equals(firstName)).findFirst().orElse(null);
     }
 }

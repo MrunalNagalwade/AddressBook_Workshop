@@ -79,4 +79,14 @@ public class AddressBookTest {
         System.out.println(contactList.toString());
         Assertions.assertEquals(7,contactList.size());
     }
+    @Test
+    public void givenAddressBookDetails_WhenUpdated_ShouldReturnTrue()
+    {
+        AddressBookService addressBookService = new AddressBookService();
+        List<Contact> personList = addressBookService.readPersonDetailsDataDB(AddressBookService.IOService.DB_IO);
+        addressBookService.updateState("Radha","Karnataka");
+        boolean updateresult = addressBookService.checkDataWithDB("Radha");
+        Assertions.assertTrue(updateresult);
+
+    }
 }

@@ -6,6 +6,7 @@ import java.util.List;
 
 public class AddressBookDBService {
     private static AddressBookDBService addressBookDBService;
+    private PreparedStatement addressBookDataStatement;
 
 
     public static AddressBookDBService getInstance()
@@ -46,12 +47,12 @@ public class AddressBookDBService {
         return contactListdb;
     }
 
-    private List<Contact> getAddressbookContactData(ResultSet resultSet)
+    List<Contact> getAddressbookContactData(ResultSet resultSet)
     {
         List<Contact> contactArrayList = new ArrayList<>();
         try{
             while (resultSet.next()) {
-                String firstName = resultSet.getString("Name");
+                String firstName = resultSet.getString("firstName");
                 String lastName = resultSet.getString("Lastname");
                 String address = resultSet.getString("Address");
                 String city = resultSet.getString("City");
@@ -66,6 +67,44 @@ public class AddressBookDBService {
             e.printStackTrace();
         }
         return contactArrayList;
+    }
+    public List<Contact>getAddressbookContactData(String firstName)
+    {
+        List<Contact> personList = null;
+        if (this.addressBookDataStatement == null)
+            this.prepareStatementForAddressBookData();
+        try {
+            addressBookDataStatement.setString(1, firstName);
+            ResultSet resultSet = addressBookDataStatement.executeQuery();
+            personList = this.getAddressbookContactData(resultSet);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return personList;
+    }
+    private void prepareStatementForAddressBookData() {
+        try {
+            Connection connection = this.getConnection();
+            String sql = "SELECT * FROM address_book_service WHERE firstName = ?";
+            addressBookDataStatement = connection.prepareStatement(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public int updateState(String firstName, String State)
+    {
+        return this.updateAddressBookDataUsingStatement(firstName, State);
+    }
+    private int updateAddressBookDataUsingStatement(String firstName, String State)
+    {
+        String sql = String.format("update address_book_service set State = '%s' where firstName = '%s';", State, firstName);
+        try (Connection connection = this.getConnection()) {
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
     public static void main(String[] args) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/Address_book_serviceDB";
