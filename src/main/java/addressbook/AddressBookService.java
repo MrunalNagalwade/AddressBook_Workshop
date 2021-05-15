@@ -38,4 +38,8 @@ public class AddressBookService {
     private Contact getData(String firstName) {
         return this.contactList.stream().filter(contactDetails -> contactDetails.firstName.equals(firstName)).findFirst().orElse(null);
     }
+    public List<Contact> getPersonCity(IOService ioService, String city)
+    {
+        return addressBookDBService.getPersonCity(city);
+    }
 }

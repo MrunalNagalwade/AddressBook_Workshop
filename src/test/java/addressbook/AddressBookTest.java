@@ -89,4 +89,14 @@ public class AddressBookTest {
         Assertions.assertTrue(updateresult);
 
     }
+    @Test
+    public void whenStateFromDB_CountRetrieved_ShouldReturnTrue()
+    {
+        AddressBookService addressBookService = new AddressBookService();
+        List<Contact> addressBookCityList =
+                addressBookService.getPersonCity(AddressBookService.IOService.DB_IO,
+                        "Bhandara");
+        System.out.println(addressBookCityList.toString());
+        Assertions.assertEquals(1, addressBookCityList.size());
+    }
 }

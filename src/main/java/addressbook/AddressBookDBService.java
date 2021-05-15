@@ -106,6 +106,26 @@ public class AddressBookDBService {
         }
         return 0;
     }
+    public List<Contact> getPersonCity(String city)
+    {
+        String sql = String.format("SELECT * FROM address_book_service WHERE city =  '%s';", city);
+        return this.getAddressBookDataUsingDB(sql);
+    }
+    private List<Contact> getAddressBookDataUsingDB(String sql)
+    {
+        List<Contact> addressBookList = new ArrayList<>();
+        try (Connection connection = this.getConnection())
+        {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            addressBookList = this.getAddressbookContactData(resultSet);
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        return addressBookList;
+    }
     public static void main(String[] args) throws SQLException{
         String url = "jdbc:mysql://localhost:3306/Address_book_serviceDB";
         String username = "root";
