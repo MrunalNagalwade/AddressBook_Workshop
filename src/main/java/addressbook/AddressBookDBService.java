@@ -106,11 +106,6 @@ public class AddressBookDBService {
         }
         return 0;
     }
-    /*public List<Contact> getPersonCity(String city)
-    {
-        String sql = String.format("SELECT * FROM address_book_service WHERE city =  '%s';", city);
-        return this.getAddressBookDataUsingDB(sql);
-    }*/
     public List<Contact> getPersonCity(String city)
     {
         String sql = String.format("SELECT * FROM address_book_service WHERE city =  '%s';", city);
